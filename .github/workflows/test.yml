@@ -38,21 +38,13 @@ jobs:
       run: |
         cargo clippy -- -D warnings
 
-  security:
+  security_audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v1
+      - uses: actions-rs/audit-check@v1
         with:
-          toolchain: stable
-          override: true
-          profile: minimal
-      - name: Cargo audit
-        run: |
-          cargo install cargo-audit --force
-          cargo audit
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   test-ubuntu:
     runs-on: ubuntu-latest
