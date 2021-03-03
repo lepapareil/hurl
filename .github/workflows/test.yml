@@ -43,10 +43,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: cargo audit  
+      - name: audit check  
         uses: actions-rs/audit-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: cargo audit
+        run: |
+          cargo install cargo-audit   
+          cargo audit
 
   test-ubuntu:
     runs-on: ubuntu-latest
