@@ -38,6 +38,16 @@ jobs:
       run: |
         cargo clippy -- -D warnings
 
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: cargo audit  
+        uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
   test-ubuntu:
     runs-on: ubuntu-latest
     strategy:
