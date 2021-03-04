@@ -19,5 +19,4 @@ jobs:
         profile: minimal
     - name: Dependency scan
       run: |
-        cargo install cargo-audit
         cargo audit --deny warnings
