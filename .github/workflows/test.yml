@@ -6,7 +6,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  rustfmt:
+  security:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -17,7 +17,7 @@ jobs:
         toolchain: stable
         override: true
         profile: minimal
-    - name: Dependency security check
+    - name: Dependency scan
       run: |
-        cargo insall cargo-audit || true
+        cargo install cargo-audit || true
         cargo audit || true
