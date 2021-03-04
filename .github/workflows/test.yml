@@ -20,4 +20,4 @@ jobs:
     - name: Dependency scan
       run: |
         cargo install cargo-audit
-        cargo audit --deny-warnings
+        cargo audit --deny warnings
