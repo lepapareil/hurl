@@ -19,5 +19,5 @@ jobs:
         profile: minimal
     - name: Dependency scan
       run: |
-        cargo install cargo-audit || true
-        cargo audit || true
+        cargo install cargo-audit
+        cargo audit
